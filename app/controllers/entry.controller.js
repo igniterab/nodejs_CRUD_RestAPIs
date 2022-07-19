@@ -151,7 +151,7 @@ exports.monthSort = (req, res) => {
         {
             $group:
             {
-                _id: { registration_date: "$registration_date" },
+                _id: { "month": { $substrCP: [ "$registration_date", 0, 7 ] }},
                 totalRegistration: { $sum: 1 },
             }
         }
